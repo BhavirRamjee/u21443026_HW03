@@ -1,0 +1,45 @@
+﻿@model IEnumerable<u21443026_HW03FINALFINAL.Models.FileModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Download and delete from Files Stored in UploadedFiles/Files</h2>
+
+<div class="jumbotron">
+    <table class="table">
+        <tr>
+            <th>
+                File Name
+            </th>
+            <th></th>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var file in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => file.FileName)
+                    </td>
+                    <td>
+                        <!--Encoding type that allows files to be sent through to POST-->
+                        <!--Button that populates the table once a file is uploaded which allows for downloading of the file-->
+                        <button class="btn btn-success" color="White"> @Html.ActionLink("Download File", "DownloadFile", new { DownloadName = file.FileName })</button>
+
+                        <!--Button that populates the table once a file is uploaded to allow for it to be deleted-->
+                        <button class="btn btn-success" color="White"> @Html.ActionLink("Delete File", "Delete", new { DeleteFile = file.FileName })</button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td>No Files</td>
+            </tr>
+        }
+
+
+    </table>
+</div>

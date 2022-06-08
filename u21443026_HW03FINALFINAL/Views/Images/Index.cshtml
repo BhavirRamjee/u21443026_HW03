@@ -1,0 +1,43 @@
+﻿@model IEnumerable<u21443026_HW03FINALFINAL.Models.FileModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Download and delete from Images Stored in UploadedFiles/Images</h2>
+
+<div class="jumbotron">
+    <table class="table">
+        <tr>
+            <th>
+                File Name
+            </th>
+            <th></th>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var Images in Model)
+            {
+    <div class="col-lg-3">
+        <a href="~/Media/Images/@Images.FileName" data-caption="@Images.FileName">
+            <img src="~/Media/Images/@Images.FileName" style="height:200px" />
+            <p>@Images.FileName</p>
+        </a>
+
+        <!--Button that populates the table once an image is uploaded to allow for it to be downloaded-->
+        <button class="btn btn-danger"> @Html.ActionLink("Download", "DownloadFile", new { DownloadImageName = Images.FileName })</button>
+
+        <!--Button that populates the table once an image is uploaded to allow for it to be deleted-->
+        <button class="btn btn-success"> @Html.ActionLink("Delete", "Delete", new { DeleteImage = Images.FileName })</button>
+    </div>
+            }
+        }
+
+        else
+        {
+            <div class="col-lg-3">
+                No images
+            </div>
+
+        }
+
+</div>

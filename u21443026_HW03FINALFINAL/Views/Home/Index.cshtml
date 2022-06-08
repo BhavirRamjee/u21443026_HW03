@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@ViewBag.Msg
+<div class="jumbotron">
+
+    <div class="row">
+        <div class=col-lg-8>
+            <h2>Description</h2>
+            <p>This system will allow users to upload and store files on the cloud. It will allow them to upload videos, files and images as well as allow them to delete their files and download them.</p>
+
+        </div>
+        <div class=col-lg-4>
+            <h2>Option Selection</h2>
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <!--Radio button lable for document radio button-->
+                <label>Document</label>
+                <!--Radio Button to allow the user to select the document option-->
+                <input type="radio" name="radioButton" value="Document" /><br />
+
+                <!--Radio button lable for image radio button-->
+                <label>Image</label>
+                <!--Radio Button to allow the user to select the Image option-->
+                <input type="radio" name="radioButton" value="Image" /><br />
+
+                <!--Radio button lable for Video radio button-->
+                <label>Video</label>
+                <!--Radio Button to allow the user to select the Video option-->
+                <input type="radio" name="radioButton" value="Video" />
+
+                <!--Code for the "Choose File" button to allow the user to select a file from their computer-->
+                <input type="file" name="files" />
+                <br />
+                <!--Label for the submit button-->
+                <button type="submit">Submit</button>
+            }
+        </div>
+    </div>
+
+</div>
